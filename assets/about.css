@@ -1,0 +1,50 @@
+.about-hero{position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(0,.9fr) minmax(400px,1.1fr);align-items:center;gap:clamp(36px,7vw,96px);max-width:1440px;min-height:620px;margin:auto;padding:84px clamp(22px,8vw,120px);background:radial-gradient(ellipse at 76% 48%,#E8EFFD 0,rgba(232,239,253,.52) 30%,transparent 62%)}
+.about-hero::before{content:"";position:absolute;z-index:-1;inset:0;background-image:radial-gradient(#CBD5E7 1px,transparent 1.3px);background-size:25px 25px;mask-image:linear-gradient(90deg,transparent 25%,#000 80%,transparent);opacity:.35;pointer-events:none}
+.about-hero-copy{position:relative;z-index:2;animation:copy-enter .8s var(--ease) both}
+.about-spark{display:grid;place-items:center;width:23px;height:23px;border-radius:7px;background:#E8EEFB;color:var(--blue);font-size:.9rem}
+.about-hero h1{max-width:12ch;margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(3.6rem,6.7vw,6.3rem);font-weight:600;line-height:.96;letter-spacing:-.06em;animation:title-enter .85s var(--ease) .08s both}
+.about-hero h1 span,.belief-intro h2 span{color:var(--blue)}
+.about-hero-lead{max-width:450px;margin:23px 0 27px;color:var(--muted);font-size:1.06rem;line-height:1.75}
+.about-art{position:relative;isolation:isolate;min-width:0;min-height:450px;overflow:clip;border:1px solid rgba(216,224,237,.78);border-radius:24px;background:radial-gradient(ellipse at 50% 46%,#fff 0,#F7F9FC 48%,rgba(233,239,248,.78) 100%);box-shadow:0 24px 60px -42px rgba(23,32,51,.28);perspective:900px;animation:art-enter 1s var(--ease) .18s both}
+.about-art::before,.about-art::after{content:"";position:absolute;z-index:-1;inset:35px;border:1px solid rgba(40,85,197,.08);border-radius:50%;animation:visual-breathe 7s ease-in-out infinite}
+.about-art::after{inset:70px;animation-delay:-3.5s;animation-direction:reverse}
+.art-ring{position:absolute;left:50%;top:49%;border:1px dashed rgba(40,85,197,.16);border-radius:50%;pointer-events:none}
+.ring-one{width:350px;height:225px;transform:translate(-50%,-50%) rotate(-25deg);animation:visual-orbit 34s linear infinite}
+.ring-two{width:305px;height:195px;transform:translate(-50%,-50%) rotate(31deg);animation:visual-orbit 27s linear infinite reverse}
+.art-path{position:absolute;z-index:1;left:50%;top:49%;width:min(100%,460px);height:auto;overflow:visible;transform:translate(-50%,-50%)}
+.art-path path{fill:none;stroke:#B8C7E3;stroke-width:1.5;stroke-dasharray:4 7;stroke-linecap:round}
+.art-path circle{fill:#fff;stroke:var(--blue);stroke-width:3;filter:drop-shadow(0 2px 5px rgba(40,85,197,.34))}
+.art-node{position:absolute;z-index:3;display:flex;align-items:center;gap:8px;padding:9px 12px;border:1px solid #E1E7F1;border-radius:11px;background:rgba(255,255,255,.95);box-shadow:0 12px 28px -20px rgba(23,32,51,.38);color:#4A566B;font-size:.72rem;font-weight:700;animation:float-card 5s ease-in-out infinite}
+.art-node span{display:grid;place-items:center;width:24px;height:24px;border-radius:7px;background:#EAF0FD;color:var(--blue);font-size:.9rem}
+.customer-node{left:7%;top:22%}
+.business-node{right:7%;bottom:20%;animation-delay:-2s}
+.business-node span{background:#E8F5EE;color:var(--green)}
+.art-center{position:absolute;z-index:2;left:50%;top:49%;display:flex;flex-direction:column;align-items:center;justify-content:center;width:160px;height:160px;border:1px solid rgba(255,255,255,.95);border-radius:50%;background:linear-gradient(145deg,#fff,#F4F7FD);box-shadow:0 18px 45px -24px rgba(40,85,197,.28),inset 0 0 0 9px rgba(40,85,197,.035);transform:translate(-50%,-50%);animation:core-breathe 4.6s ease-in-out infinite}
+.center-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:#E8EEFB;color:var(--blue)}
+.center-mark svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2}
+.art-center>b{margin-top:8px;color:#23324C;font-size:.91rem}
+.art-center>small{margin-top:3px;color:#8994A6;font-size:.48rem;font-weight:800;letter-spacing:.1em}
+.art-index{position:absolute;left:19px;bottom:17px;color:#8994A6;font-size:.52rem;font-weight:800;letter-spacing:.11em}
+.beliefs{max-width:1240px;margin:auto;padding:112px clamp(22px,7vw,96px) 120px}
+.belief-intro{max-width:740px}
+.belief-intro h2{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(2.8rem,5vw,4.7rem);font-weight:600;line-height:1;letter-spacing:-.055em}
+.belief-intro>p:last-child{max-width:650px;margin:20px 0 0;color:var(--muted);font-size:.97rem;line-height:1.8}
+.belief-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:48px}
+.belief-card{position:relative;min-height:225px;padding:24px;border:1px solid #E3E9F1;border-radius:17px;background:linear-gradient(145deg,#fff,#FBFCFE);box-shadow:0 12px 34px -28px rgba(23,32,51,.35);transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s}
+.belief-number{position:absolute;right:20px;top:20px;color:#9AA5B5;font-size:.63rem;font-weight:800;letter-spacing:.1em}
+.belief-icon{display:grid;place-items:center;width:43px;height:43px;border-radius:13px;background:#EAF0FD;color:var(--blue);font-size:1.25rem}
+.icon-flow{background:#E7F5EE;color:var(--green)}
+.icon-calm{background:#F1ECFB;color:#7255B3}
+.belief-card h3{margin:26px 0 7px;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:1.45rem;letter-spacing:-.025em}
+.belief-card p{max-width:31ch;margin:0;color:var(--muted);font-size:.85rem;line-height:1.65}
+@media(hover:hover) and (pointer:fine){.belief-card:hover{transform:translateY(-6px);border-color:#C8D6EF;box-shadow:0 24px 42px -28px rgba(40,85,197,.3)}.about-art:hover .art-center{scale:1.04}.about-art:hover .art-path path{stroke:#829BD0;stroke-dasharray:2 7}}
+.about-cta{position:relative;isolation:isolate;overflow:hidden;display:flex;flex-direction:column;align-items:center;max-width:1120px;margin:0 auto 100px;padding:70px 24px;border:1px solid #2D55AE;border-radius:24px;color:#fff;text-align:center;background:radial-gradient(ellipse at 50% 120%,rgba(125,161,240,.42),transparent 50%),linear-gradient(135deg,#173B96,#2855C5 60%,#3D67C9);box-shadow:0 30px 65px -42px rgba(40,85,197,.76)}
+.cta-orbit{position:absolute;z-index:-1;top:-145px;left:calc(50% - 180px);width:360px;height:360px;border:1px solid rgba(255,255,255,.17);border-radius:50%;box-shadow:0 0 0 36px rgba(255,255,255,.025),0 0 0 74px rgba(255,255,255,.02);animation:visual-orbit 30s linear infinite}
+.about-cta .eyebrow{color:#BFD0FF}
+.about-cta h2{margin:0;font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;font-size:clamp(2.8rem,5vw,4.5rem);font-weight:600;line-height:1;letter-spacing:-.05em}
+.about-cta>p:not(.eyebrow){max-width:480px;margin:15px 0 24px;color:rgba(255,255,255,.78);font-size:.94rem}
+.about-cta>small{margin-top:17px;color:rgba(255,255,255,.66);font-size:.67rem}
+@media(max-width:900px){.about-hero{grid-template-columns:minmax(0,.9fr) minmax(340px,1.1fr);gap:28px;padding-inline:5vw}.about-hero h1{font-size:clamp(3.3rem,6.5vw,5rem)}.about-art{min-height:410px}}
+@media(max-width:720px){.about-hero{grid-template-columns:1fr;gap:32px;padding:62px 24px 70px}.about-hero-copy{max-width:620px}.about-hero h1{font-size:clamp(3.5rem,11vw,5rem)}.about-art{width:min(100%,560px);margin:auto}.beliefs{padding:82px 24px 88px}.belief-grid{grid-template-columns:1fr;gap:12px;margin-top:34px}.belief-card{min-height:0;padding:21px}.belief-card h3{margin-top:19px}.about-cta{margin:0 22px 70px}}
+@media(max-width:480px){.about-hero{padding:48px 18px 58px}.about-hero h1{font-size:clamp(3rem,12.5vw,4rem)}.about-hero-lead{font-size:.98rem}.about-art{min-height:350px;border-radius:18px}.ring-one{width:285px;height:185px}.ring-two{width:255px;height:165px}.art-center{width:138px;height:138px}.customer-node{left:3%;top:21%}.business-node{right:3%;bottom:18%}.art-index{left:12px;bottom:12px;font-size:.45rem}.beliefs{padding:70px 18px 76px}.belief-intro h2{font-size:clamp(2.6rem,11vw,3.5rem)}.about-cta{margin:0 18px 54px;padding:54px 19px;border-radius:18px}.about-cta h2{font-size:clamp(2.6rem,11vw,3.4rem)}.about-cta .button{width:100%}}
+@media(prefers-reduced-motion:reduce){.about-hero h1,.about-hero-copy,.about-art{opacity:1;filter:none;transform:none}.art-path animateMotion{display:none}}

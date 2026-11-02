@@ -1,0 +1,593 @@
+/* ==========================================================================
+   D-UI Animated Intro Landing Screen
+   (Based on Pierre Leverrier's Daily UI #003 Concept)
+   ========================================================================== */
+
+/* Prevent scroll during intro screen */
+body.dui-intro-active {
+  overflow: hidden !important;
+  height: 100vh !important;
+}
+
+/* Full-Screen Container */
+.dui-intro-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 999999;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0b0f19;
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 0.4) 0%, rgba(11, 15, 25, 0.92) 100%),
+    linear-gradient(135deg, rgba(8, 14, 26, 0.85), rgba(15, 23, 42, 0.92)),
+    url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=2000&q=80');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  filter: blur(0px);
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              filter 1.1s ease,
+              visibility 1.1s ease;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fade-out Transition with subtle zoom & blur */
+.dui-intro-screen.dui-fading {
+  opacity: 0;
+  transform: scale(1.08);
+  filter: blur(10px);
+  pointer-events: none;
+  visibility: hidden;
+}
+
+/* Fallback background if image fails to load */
+.dui-intro-screen::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, #172554 0%, #0f172a 45%, #020617 100%);
+  z-index: -2;
+  opacity: 0.9;
+}
+
+/* Ambient glow orb behind the orbits */
+.dui-intro-screen::after {
+  content: "";
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(12, 131, 255, 0.18) 0%, rgba(99, 102, 241, 0.08) 40%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+  animation: dui-glow-pulse 6s infinite ease-in-out alternate;
+}
+
+@keyframes dui-glow-pulse {
+  0% { transform: translate(-50%, -50%) scale(0.9); opacity: 0.5; }
+  100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.85; }
+}
+
+/* Top Progress Hairline (5-second visual indicator) */
+.dui-intro-progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #0c83ff, #38bdf8, #10b981);
+  box-shadow: 0 0 10px rgba(12, 131, 255, 0.6);
+  z-index: 100;
+  animation: dui-progress-run 5s linear forwards;
+}
+
+@keyframes dui-progress-run {
+  0% { width: 0%; }
+  100% { width: 100%; }
+}
+
+/* ==========================================================================
+   Header Top Bar
+   ========================================================================== */
+.dui-intro-header {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1320px;
+  padding: 28px clamp(20px, 4vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Logo */
+.dui-intro-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease;
+  user-select: none;
+}
+
+.dui-intro-logo:hover {
+  opacity: 0.92;
+  transform: translateY(-1px) scale(1.02);
+}
+
+.dui-intro-logo:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.dui-intro-logo-icon {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(12, 131, 255, 0.15);
+  border: 1px solid rgba(12, 131, 255, 0.4);
+  border-radius: 8px;
+  color: #0c83ff;
+}
+
+.dui-intro-logo-text {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #ffffff;
+}
+
+.dui-intro-logo-text span {
+  color: #0c83ff;
+}
+
+/* Social Icons in Header */
+.dui-intro-socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.dui-intro-social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.dui-intro-social-link:hover {
+  color: #ffffff;
+  background: rgba(12, 131, 255, 0.25);
+  border-color: #0c83ff;
+  transform: translateY(-2px);
+}
+
+.dui-intro-social-link svg {
+  width: 14px;
+  height: 14px;
+  fill: currentColor;
+}
+
+/* Skip Intro Button */
+.dui-intro-skip-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #e2e8f0;
+  padding: 6px 14px;
+  border-radius: 50px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 12px;
+}
+
+.dui-intro-skip-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  color: #ffffff;
+  transform: scale(1.03);
+}
+
+/* ==========================================================================
+   Centerpiece Hero with Ellipses Orbit Animations
+   ========================================================================== */
+.dui-intro-center {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Coordinate Text (Upper Telemetry) */
+.dui-intro-coords {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: clamp(0.7rem, 1.4vw, 0.85rem);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(148, 163, 184, 0.85);
+  margin-bottom: 22px;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dui-intro-coords::before,
+.dui-intro-coords::after {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.4);
+}
+
+/* Ellipses Container */
+.dui-intro-ellipses-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: clamp(280px, 45vw, 560px);
+  height: clamp(280px, 45vw, 560px);
+}
+
+/* Center Typography: "Hello" */
+.dui-intro-greeting {
+  font-size: clamp(4rem, 10vw, 8.5rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  margin: 0;
+  color: #ffffff;
+  text-align: center;
+  z-index: 7;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.6), 0 0 60px rgba(12, 131, 255, 0.25);
+  transform: translateY(-8px);
+}
+
+.dui-intro-welcome {
+  font-size: clamp(0.72rem, 1.3vw, 0.88rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: #0c83ff;
+  margin: 12px 0 0 0;
+  z-index: 7;
+  text-shadow: 0 0 15px rgba(12, 131, 255, 0.4);
+}
+
+/* ==========================================================================
+   Rotating Ellipses & Animated Circular Borders
+   ========================================================================== */
+.dui-intro-ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+/* Orbit 1: Outer Thin Rotating Ellipse (Tilted oval orbit) */
+.dui-intro-ellipse-outer-thin {
+  width: 104%;
+  height: 104%;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-top-color: rgba(12, 131, 255, 0.6);
+  animation: dui-spin-clockwise 22s linear infinite;
+  z-index: 2;
+}
+
+/* Satellite planet riding on the outer thin orbit */
+.dui-intro-satellite {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #0c83ff;
+  box-shadow: 0 0 14px #0c83ff, 0 0 24px #38bdf8;
+  transform: translateX(-50%);
+}
+
+.dui-intro-satellite::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(12, 131, 255, 0.4);
+  animation: dui-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes dui-ping {
+  75%, 100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+/* Orbit 2: Concentric Ellipse with dashes */
+.dui-intro-ellipse-dashed {
+  width: 88%;
+  height: 88%;
+  border: 1px dashed rgba(255, 255, 255, 0.22);
+  border-spacing: 8px;
+  animation: dui-spin-counter 30s linear infinite;
+  z-index: 3;
+}
+
+/* Orbit 3: Outer Thick Accent Ellipse */
+.dui-intro-ellipse-outer-thick {
+  width: 72%;
+  height: 72%;
+  border: 2px solid rgba(255, 255, 255, 0.08);
+  border-left: 2px solid rgba(16, 185, 129, 0.7);
+  border-right: 2px solid rgba(12, 131, 255, 0.7);
+  animation: dui-spin-clockwise 16s linear infinite;
+  z-index: 4;
+}
+
+/* Orbit 4: Inner Core Circular Glow */
+.dui-intro-ellipse-core {
+  width: 54%;
+  height: 54%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 20px rgba(12, 131, 255, 0.06);
+  animation: dui-spin-counter 40s linear infinite;
+  z-index: 5;
+}
+
+/* Orbit Keyframes */
+@keyframes dui-spin-clockwise {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes dui-spin-counter {
+  from {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+/* ==========================================================================
+   Side Scrolling Timeline & Indicators
+   ========================================================================== */
+.dui-intro-side-timeline {
+  position: absolute;
+  right: clamp(16px, 3.5vw, 44px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  z-index: 10;
+}
+
+.dui-intro-timeline-num {
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 0.1em;
+}
+
+.dui-intro-timeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.dui-intro-timeline-unit {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  transition: all 0.3s ease;
+}
+
+.dui-intro-timeline-unit.active {
+  background: #0c83ff;
+  height: 18px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px #0c83ff;
+}
+
+.dui-intro-timeline-label {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: rotate(180deg);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  margin-top: 10px;
+}
+
+/* Left Side Telemetry */
+.dui-intro-side-telemetry {
+  position: absolute;
+  left: clamp(16px, 3.5vw, 44px);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  z-index: 10;
+  font-family: ui-monospace, monospace;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.15em;
+}
+
+.dui-intro-telemetry-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dui-intro-live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+/* ==========================================================================
+   Footer Bottom Bar
+   ========================================================================== */
+.dui-intro-footer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1320px;
+  padding: 22px clamp(20px, 4vw, 48px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.08em;
+  box-sizing: border-box;
+}
+
+.dui-intro-scroll-prompt {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+}
+
+.dui-intro-scroll-indicator {
+  width: 1px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.dui-intro-scroll-indicator::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #0c83ff;
+  animation: dui-scroll-drop 2s infinite ease;
+}
+
+@keyframes dui-scroll-drop {
+  0% { transform: translateY(-100%); }
+  50%, 100% { transform: translateY(100%); }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 860px) {
+  .dui-intro-side-telemetry {
+    display: none;
+  }
+  .dui-intro-side-timeline {
+    right: 12px;
+  }
+  .dui-intro-ellipses-container {
+    width: clamp(260px, 75vw, 420px);
+    height: clamp(260px, 75vw, 420px);
+  }
+  .dui-intro-coords {
+    font-size: 0.68rem;
+    letter-spacing: 0.15em;
+  }
+}
+
+@media (max-width: 580px) {
+  .dui-intro-header {
+    padding: 18px 20px;
+  }
+  .dui-intro-socials {
+    display: none;
+  }
+  .dui-intro-side-timeline {
+    display: none;
+  }
+  .dui-intro-footer {
+    padding: 16px 20px;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+  .dui-intro-greeting {
+    font-size: clamp(2.4rem, 12vw, 4rem);
+  }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .dui-intro-screen,
+  .dui-intro-ellipse,
+  .dui-intro-progress-bar,
+  .dui-intro-satellite::after,
+  .dui-intro-scroll-indicator::after {
+    animation: none !important;
+    transition: opacity 0.4s ease !important;
+  }
+}

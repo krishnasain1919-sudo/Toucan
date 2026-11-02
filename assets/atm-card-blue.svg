@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 325 160" width="325" height="160">
+  <defs>
+    <linearGradient id="bg-blue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a2e8c"/>
+      <stop offset="40%" stop-color="#164ed8"/>
+      <stop offset="80%" stop-color="#2563eb"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+    <linearGradient id="chip-gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe8a3"/>
+      <stop offset="50%" stop-color="#ca8a04"/>
+      <stop offset="100%" stop-color="#fef08a"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32"/>
+      <stop offset="30%" stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+
+  <!-- Card Body -->
+  <rect width="325" height="160" fill="url(#bg-blue)"/>
+
+  <!-- Guilloche / Dynamic Payment Waves -->
+  <g opacity="0.25" stroke="#ffffff" fill="none" stroke-width="1">
+    <path d="M-20,40 Q60,120 160,50 T340,30" />
+    <path d="M-20,60 Q70,140 180,70 T340,50" />
+    <path d="M-20,80 Q80,160 200,90 T340,70" />
+    <circle cx="280" cy="35" r="55" stroke-dasharray="3 3"/>
+    <circle cx="280" cy="35" r="38"/>
+  </g>
+
+  <!-- Glossy Sheen Sweep -->
+  <path d="M0 0 L180 0 L70 160 L0 160 Z" fill="url(#sheen)"/>
+
+  <!-- Toucan Logo -->
+  <g transform="translate(20, 16)">
+    <path d="M3 9c3-6 9-6 12 0-3 6-9 6-12 0z" fill="none" stroke="#ffffff" stroke-width="2"/>
+    <text x="20" y="12" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" letter-spacing="0.5">Toucan</text>
+    <text x="82" y="12" fill="#bae6fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="700" letter-spacing="1.5">PLATINUM</text>
+  </g>
+
+  <!-- Contactless Payment Waves -->
+  <g transform="translate(285, 16)" stroke="#ffffff" stroke-width="1.8" fill="none" opacity="0.9">
+    <path d="M0 3 A 8 8 0 0 1 0 15" stroke-linecap="round"/>
+    <path d="M4 1 A 12 12 0 0 1 4 17" stroke-linecap="round"/>
+    <path d="M8 -1 A 16 16 0 0 1 8 19" stroke-linecap="round"/>
+  </g>
+
+  <!-- Gold EMV Chip -->
+  <g transform="translate(22, 46)">
+    <rect width="36" height="26" rx="4" fill="url(#chip-gold)" stroke="#854d0e" stroke-width="0.7"/>
+    <path d="M0 9 H13 M23 9 H36 M0 17 H13 M23 17 H36" stroke="#713f12" stroke-width="0.7" opacity="0.85"/>
+    <rect x="13" y="6" width="10" height="14" rx="2" fill="none" stroke="#713f12" stroke-width="0.7" opacity="0.85"/>
+    <line x1="18" y1="0" x2="18" y2="6" stroke="#713f12" stroke-width="0.7" opacity="0.85"/>
+    <line x1="18" y1="20" x2="18" y2="26" stroke="#713f12" stroke-width="0.7" opacity="0.85"/>
+  </g>
+
+  <!-- Embossed Card Number -->
+  <text x="22" y="108" fill="#ffffff" font-family="'Courier New', Courier, monospace" font-size="16" font-weight="bold" letter-spacing="2.6" filter="url(#shadow)">
+    4242 &nbsp;8920 &nbsp;4110 &nbsp;4242
+  </text>
+
+  <!-- Cardholder Details -->
+  <g transform="translate(22, 126)">
+    <text x="0" y="8" fill="rgba(255,255,255,0.65)" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="6.5" font-weight="700" letter-spacing="1">CARDHOLDER</text>
+    <text x="0" y="21" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.5">A. MERCHANT</text>
+  </g>
+
+  <!-- Expiry -->
+  <g transform="translate(155, 126)">
+    <text x="0" y="8" fill="rgba(255,255,255,0.65)" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="6.5" font-weight="700" letter-spacing="1">EXPIRES</text>
+    <text x="0" y="21" fill="#ffffff" font-family="'Courier New', Courier, monospace" font-size="11" font-weight="bold">09/29</text>
+  </g>
+
+  <!-- Card Network Hologram Badge -->
+  <g transform="translate(255, 126)">
+    <circle cx="12" cy="11" r="11" fill="#eb001b" opacity="0.92"/>
+    <circle cx="25" cy="11" r="11" fill="#ff5f00" opacity="0.92"/>
+  </g>
+</svg>

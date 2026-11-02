@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<title>Toucan – Full-Stack Payment Platform Frontend</title>
+<link rel="stylesheet" href="assets/styles.css">
+<link rel="stylesheet" href="assets/platform.css">
+<link rel="stylesheet" href="assets/rzp-about.css">
+<link rel="stylesheet" href="assets/dui-intro.css">
+<link rel="stylesheet" href="assets/security-cards.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     D-UI Animated Full-Screen Intro Screen (5-second auto transition)
+     ========================================================================== -->
+<div id="dui-intro-screen" class="dui-intro-screen" role="region" aria-label="Intro Welcome Screen">
+  <!-- 5-second progress indicator line -->
+  <div class="dui-intro-progress-bar" aria-hidden="true"></div>
+
+  <!-- Header: Logo, Social Icons & Skip Button -->
+  <header class="dui-intro-header">
+    <a href="#top" id="dui-intro-logo" class="dui-intro-logo" aria-label="Toucan Home - Go to Main Site" title="Go to main site">
+      <div class="dui-intro-logo-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z"/>
+        </svg>
+      </div>
+      <span class="dui-intro-logo-text">Toucan<span>.</span></span>
+    </a>
+
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <nav class="dui-intro-socials" aria-label="Social links">
+        <a href="https://x.com" class="dui-intro-social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="https://instagram.com" class="dui-intro-social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://github.com" class="dui-intro-social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </nav>
+      <button class="dui-intro-skip-btn" id="dui-intro-skip-btn" type="button" aria-label="Skip Intro Screen">
+        <span>Skip</span> <span aria-hidden="true">&rarr;</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Left Sidebar Telemetry -->
+  <aside class="dui-intro-side-telemetry" aria-hidden="true">
+    <div class="dui-intro-telemetry-badge">
+      <span class="dui-intro-live-dot"></span>
+      <span>SYSTEM READY</span>
+    </div>
+    <div>LAT 49.2764&deg; N</div>
+    <div>LONG 0.7031&deg; W</div>
+    <div>SCALE 1:1.0</div>
+  </aside>
+
+  <!-- Right Sidebar: Scrolling Timeline -->
+  <aside class="dui-intro-side-timeline" aria-label="Timeline navigation">
+    <span class="dui-intro-timeline-num">01</span>
+    <div class="dui-intro-timeline">
+      <span class="dui-intro-timeline-unit"></span>
+      <span class="dui-intro-timeline-unit active"></span>
+      <span class="dui-intro-timeline-unit"></span>
+      <span class="dui-intro-timeline-unit"></span>
+    </div>
+    <span class="dui-intro-timeline-num">04</span>
+    <span class="dui-intro-timeline-label">TIMELINE</span>
+  </aside>
+
+  <!-- Center Hero: Coordinates, "Hello" & Rotating Ellipses Orbits -->
+  <main class="dui-intro-center">
+    <p class="dui-intro-coords" aria-label="Geographic Coordinates">N 49&deg; 16' 35.173" &nbsp;/&nbsp; W 0&deg; 42' 11.30"</p>
+    
+    <div class="dui-intro-ellipses-container">
+      <!-- Centered Greeting -->
+      <h1 class="dui-intro-greeting">Hello</h1>
+      <p class="dui-intro-welcome">Welcome to Toucan</p>
+
+      <!-- Orbit 1: Outer Thin Rotating Ellipse with Planet Satellite -->
+      <div class="dui-intro-ellipse dui-intro-ellipse-outer-thin" aria-hidden="true">
+        <div class="dui-intro-satellite"></div>
+      </div>
+
+      <!-- Orbit 2: Concentric Dashed Ellipse Rotating Counter-Clockwise -->
+      <div class="dui-intro-ellipse dui-intro-ellipse-dashed" aria-hidden="true"></div>
+
+      <!-- Orbit 3: Outer Thick Accent Ellipse Rotating Clockwise -->
+      <div class="dui-intro-ellipse dui-intro-ellipse-outer-thick" aria-hidden="true"></div>
+
+      <!-- Orbit 4: Inner Core Circular Glow Ring -->
+      <div class="dui-intro-ellipse dui-intro-ellipse-core" aria-hidden="true"></div>
+    </div>
+  </main>
+
+  <!-- Footer Bottom Bar -->
+  <footer class="dui-intro-footer">
+    <div>&copy; 2026 TOUCAN ARCHITECTURE &middot; DESIGN UI #003</div>
+    <div class="dui-intro-scroll-prompt">
+      <span class="dui-intro-scroll-indicator" aria-hidden="true"></span>
+      <span>AUTOMATIC TRANSITION &middot; 5S</span>
+    </div>
+    <div>ALL SYSTEMS OPERATIONAL</div>
+  </footer>
+</div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Platform Role & Environment Bar -->
+<div class="platform-mode-bar" id="platform-mode-bar">
+  <div style="display:flex; align-items:center; gap:12px;">
+    <span class="mode-bar-badge"><span class="live-dot"></span> Live Engine</span>
+    <span>Razorpay &amp; Stripe Frontend Architecture</span>
+  </div>
+  <div class="mode-bar-actions">
+    <label style="font-size:0.8rem; font-weight:600; display:flex; align-items:center; gap:6px;">
+      <span>Role:</span>
+      <select id="mode-role-select">
+        <option value="merchant_admin">Merchant Admin</option>
+        <option value="finance">Finance Manager</option>
+        <option value="developer">Developer</option>
+        <option value="risk_officer">Risk Officer</option>
+        <option value="super_admin">Platform Super-Admin</option>
+      </select>
+    </label>
+    <label style="font-size:0.8rem; font-weight:600; display:flex; align-items:center; gap:6px;">
+      <span>Env:</span>
+      <select id="mode-env-select">
+        <option value="test">🟡 Test Mode</option>
+        <option value="live">🟢 Live Mode</option>
+      </select>
+    </label>
+    <button id="view-switch-btn" type="button" class="btn btn-ghost" style="padding:4px 12px; font-size:0.8rem; font-weight:700;">⚡ Open Merchant Console</button>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-left">
+    <a class="logo" href="#top"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>Toucan</a>
+  </div>
+  <nav class="nav-center" id="primary-nav" aria-label="Primary">
+    <a class="ulink" href="landing.html">Marketing Home</a>
+    <a class="ulink" href="#products">Products</a>
+    <a class="ulink" href="#solutions">Solutions</a>
+    <a class="ulink" href="#dashboard">Dashboard</a>
+    <a class="ulink" href="#pricing">Fees &amp; Plans</a>
+    <a class="ulink" href="#developers">Developers</a>
+    <a class="ulink" href="#checkout">Checkout</a>
+    <a class="ulink" href="#platform-estimator">Scope Estimator</a>
+    <a class="ulink" href="about.html">About</a>
+    <button class="nav-menu-action" type="button" data-nav-action="search">Search sections</button>
+    <button class="nav-menu-action" type="button" data-nav-action="login">Log in</button>
+  </nav>
+  <div class="nav-right">
+    <button class="kbtn" id="kbtn" type="button" aria-label="Open command palette">Search <kbd>⌘K</kbd></button>
+    <button class="btn btn-ghost" id="loginbtn" type="button">Log in</button>
+    <button class="btn btn-primary magnetic nav-cta" data-auth="up"><span class="nav-cta-desktop">Start in test mode</span><span class="nav-cta-mobile">Test mode</span></button>
+    <button class="nav-mobile-btn" type="button" aria-label="Open navigation menu" aria-controls="primary-nav" aria-expanded="false">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ==========================================
+     1. PUBLIC WEBSITE & MARKETING PAGES
+     ========================================== -->
+<main id="main">
+<section class="hero" id="top">
+  <canvas id="net" aria-hidden="true"></canvas>
+  <div class="hero-copy">
+    <p class="hero-kicker"><span></span> PAYMENTS, IN REAL TIME</p>
+    <h1 class="kinetic" data-split>Every rupee, accounted for in real time.</h1>
+    <p class="lead reveal">Accept cards, UPI and net banking, settle faster, and see each payment's journey from checkout to bank.</p>
+    <div class="cta reveal">
+      <button class="btn btn-primary magnetic" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('overview');">Launch Merchant Console →</button>
+      <button class="btn btn-ghost magnetic" id="btn-book-demo-cta">Book a Demo</button>
+      <button class="btn btn-ghost magnetic" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('estimator');">📐 Scope Estimator</button>
+    </div>
+  </div>
+  <div class="stage reveal" role="region" aria-label="Interactive 3D payment cards; hover over any card to view details">
+    <div class="atm-cards-stack">
+      <!-- Card 1: Platinum Debit -->
+      <article class="food-card atm-card" tabindex="0" aria-label="Toucan Platinum Debit ATM card">
+        <div class="food-card__image atm-card__image">
+          <img src="assets/card-platinum.svg" alt="Toucan Platinum Debit ATM Card" />
+        </div>
+        <div class="food-card__details atm-card__details">
+          <span class="food-card__name atm-card__name">Platinum Debit</span>
+          <span class="food-card__desc atm-card__desc">Instant Settlement</span>
+          <div class="food-card__price atm-card__price">₹2,50,000</div>
+          <div class="food-card__rating atm-card__rating" aria-label="5 out of 5 stars">
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 2: World Elite Credit -->
+      <article class="food-card atm-card" tabindex="0" aria-label="Toucan World Elite Credit ATM card">
+        <div class="food-card__image atm-card__image">
+          <img src="assets/card-obsidian.svg" alt="Toucan World Elite ATM Card" />
+        </div>
+        <div class="food-card__details atm-card__details">
+          <span class="food-card__name atm-card__name">World Elite</span>
+          <span class="food-card__desc atm-card__desc">Priority Global</span>
+          <div class="food-card__price atm-card__price">₹12,48,600</div>
+          <div class="food-card__rating atm-card__rating" aria-label="5 out of 5 stars">
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Card 3: Corporate Commercial Flex -->
+      <article class="food-card atm-card" tabindex="0" aria-label="Toucan Corporate Commercial ATM card">
+        <div class="food-card__image atm-card__image">
+          <img src="assets/card-emerald.svg" alt="Toucan Corporate ATM Card" />
+        </div>
+        <div class="food-card__details atm-card__details">
+          <span class="food-card__name atm-card__name">Corporate Flex</span>
+          <span class="food-card__desc atm-card__desc">Smart Expense</span>
+          <div class="food-card__price atm-card__price">₹85,000</div>
+          <div class="food-card__rating atm-card__rating" aria-label="4 out of 5 stars">
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star food-card__star--gold atm-card__star--gold"></span>
+            <span class="food-card__star atm-card__star"></span>
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="float f1">₹2,499 paid</div><div class="float f2">UPI · success</div>
+  </div>
+</section>
+
+<section class="marquee" aria-label="Sample live payments ticker"><div class="track"><span><i>✓</i>₹2,499 · UPI · Kaveri Coffee</span><span><i>✓</i>₹860 · Card · Basil &amp; Co.</span><span><i>✓</i>₹12,000 · Net banking · Orbit Travel</span><span><i>✓</i>₹449 · Wallet · Lumen Learning</span><span><i>✓</i>₹3,150 · UPI · Northwind Retail</span><span><i>✓</i>₹2,499 · UPI · Kaveri Coffee</span><span><i>✓</i>₹860 · Card · Basil &amp; Co.</span><span><i>✓</i>₹12,000 · Net banking · Orbit Travel</span><span><i>✓</i>₹449 · Wallet · Lumen Learning</span><span><i>✓</i>₹3,150 · UPI · Northwind Retail</span></div></section>
+
+<!-- Product Suite Explorer -->
+<section class="sec" id="products"><h2 class="reveal">One platform, from first payment to payout</h2><div class="suite reveal"><div class="slist" id="slist" role="tablist" aria-orientation="vertical" aria-label="Products"></div><div class="spanel" id="spanel" role="tabpanel" aria-live="polite"></div></div></section>
+
+<!-- Industry Specific Solutions (PDF Module 1) -->
+<section class="sec sec-solutions-wrap" id="solutions">
+  <div class="sec-solutions-header">
+    <div class="sec-security-badge">
+      <span class="sec-security-badge-dot"></span>
+      <span>VERTICAL SOLUTIONS</span>
+    </div>
+    <h2 class="sec-solutions-title">Tailored for your business model</h2>
+  </div>
+
+  <div class="bento-grid" id="solutionsBentoGrid">
+    <!-- Card 1: SaaS & Subscription Apps (Tall Card, Spans 2 cols & 2 rows) -->
+    <article class="bento-card bento-card-big bento-card-1" data-rot="-1" data-depth="10" role="article" aria-label="SaaS and Subscription Apps">
+      <div class="bento-card-body">
+        <h3 class="bento-card-title">SaaS &amp; Subscription Apps</h3>
+        <p class="bento-card-desc">Automate recurring billing, usage-based metering, smart dunning retries, and customer portal management with proration.</p>
+        <div class="bento-pill-group">
+          <span class="bento-pill">Recurring UPI</span>
+          <span class="bento-pill">Card Mandates</span>
+          <span class="bento-pill">Dunning</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2: E-commerce & Retail (Top Right, Spans 2 cols) -->
+    <article class="bento-card bento-card-2" data-rot="1.2" data-depth="6" role="article" aria-label="E-commerce and Retail">
+      <div class="bento-card-body">
+        <h3 class="bento-card-title">E-commerce &amp; Retail</h3>
+        <p class="bento-card-desc">High-converting checkout with 1-click UPI, saved cards, COD verification, and instant refunds.</p>
+      </div>
+    </article>
+
+    <!-- Card 3: Marketplaces & Platforms (Middle Left, Spans 1 col) -->
+    <article class="bento-card bento-card-3" data-rot="-1.2" data-depth="8" role="article" aria-label="Marketplaces and Platforms">
+      <div class="bento-card-body">
+        <h3 class="bento-card-title">Marketplaces &amp; Platforms</h3>
+        <p class="bento-card-desc">Automated vendor onboarding, commission split payments, and instant seller balance payouts.</p>
+      </div>
+    </article>
+
+    <!-- Card 4: EdTech & Institutions (Middle Right, Spans 1 col) -->
+    <article class="bento-card bento-card-4" data-rot="1" data-depth="9" role="article" aria-label="EdTech and Institutions">
+      <div class="bento-card-body">
+        <h3 class="bento-card-title">EdTech &amp; Institutions</h3>
+        <p class="bento-card-desc">Collect fee installments, send branded WhatsApp payment links, and auto-generate GST receipts.</p>
+      </div>
+    </article>
+
+    <!-- Card 5: Agencies & Freelancers (Bottom, Spans 4 cols) -->
+    <article class="bento-card bento-card-wide bento-card-5" data-rot="-0.5" data-depth="12" role="article" aria-label="Agencies and Freelancers">
+      <div class="bento-card-body">
+        <h3 class="bento-card-title">Agencies &amp; Freelancers</h3>
+        <p class="bento-card-desc">No-code payment pages, professional PDF invoicing, and international card acceptance in 130+ currencies.</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- Payment Timeline Story -->
+<section class="sec story" id="story">
+  <div class="layers" aria-hidden="true"><i data-speed="-.08"></i><i data-speed=".12"></i><i data-speed="-.18"></i></div>
+  <div class="sec-story-header">
+    <h2 class="sec-story-title">Follow a payment through its life</h2>
+  </div>
+
+  <!-- Timeline Step Track -->
+  <div class="story-timeline-wrap">
+    <div class="story-timeline-track">
+      <div class="story-timeline-fill" id="storyTimelineFill"></div>
+    </div>
+    <ol class="story-timeline-grid" id="timeline" role="list">
+      <li class="story-step active on" data-step="1">
+        <span class="story-step-dot" aria-hidden="true"></span>
+        <strong class="story-step-title">Created</strong>
+        <span class="story-step-desc">Order ₹2,499 opened</span>
+      </li>
+      <li class="story-step active on" data-step="2">
+        <span class="story-step-dot" aria-hidden="true"></span>
+        <strong class="story-step-title">Authorised</strong>
+        <span class="story-step-desc">Bank confirmed</span>
+      </li>
+      <li class="story-step active on" data-step="3">
+        <span class="story-step-dot" aria-hidden="true"></span>
+        <strong class="story-step-title">Captured</strong>
+        <span class="story-step-desc">Funds secured</span>
+      </li>
+      <li class="story-step" data-step="4">
+        <span class="story-step-dot" aria-hidden="true"></span>
+        <strong class="story-step-title">Settled</strong>
+        <span class="story-step-desc">Deposit T+2</span>
+      </li>
+    </ol>
+  </div>
+
+  <!-- Illustrative Money Flow 3D Diagram -->
+  <div class="money-flow-container">
+    <div class="money-flow-diagram" id="moneyFlowDiagram">
+      <!-- Node 1: Customer -->
+      <div class="flow-card-node flow-card-customer" data-rot="-1.5" data-depth="9" role="article" aria-label="Customer Entity">
+        <span>Customer</span>
+      </div>
+
+      <!-- Connector 1: Customer to Toucan -->
+      <div class="flow-connector-track" aria-hidden="true">
+        <svg viewBox="0 0 160 24" preserveAspectRatio="none">
+          <line x1="0" y1="12" x2="160" y2="12" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="6 6" />
+          <circle r="4.5" fill="#2563eb">
+            <animateMotion dur="2.4s" repeatCount="indefinite" path="M0 12 L160 12" />
+          </circle>
+        </svg>
+      </div>
+
+      <!-- Node 2: Toucan (Highlighted) -->
+      <div class="flow-card-node flow-card-toucan" data-rot="0" data-depth="5" role="article" aria-label="Toucan Central Engine">
+        <span>Toucan</span>
+      </div>
+
+      <!-- Connector 2: Toucan to Your bank -->
+      <div class="flow-connector-track" aria-hidden="true">
+        <svg viewBox="0 0 160 24" preserveAspectRatio="none">
+          <line x1="0" y1="12" x2="160" y2="12" stroke="#cbd5e1" stroke-width="2.5" stroke-dasharray="6 6" />
+          <circle r="4.5" fill="#2563eb">
+            <animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M0 12 L160 12" />
+          </circle>
+        </svg>
+      </div>
+
+      <!-- Node 3: Your bank -->
+      <div class="flow-card-node flow-card-bank" data-rot="1.5" data-depth="9" role="article" aria-label="Your Bank Entity">
+        <span>Your bank</span>
+      </div>
+    </div>
+    <div class="money-flow-caption">Illustrative money flow</div>
+  </div>
+</section>
+
+<!-- Dashboard Preview Section -->
+<section class="sec" id="dashboard">
+  <h2 class="reveal">A dashboard that answers “how are we doing?”</h2>
+  <div class="dash reveal loading" id="dash">
+    <div class="kpis">
+      <div class="kpi"><small>Payment volume</small><strong><span class="sk-hide">₹<span data-count="1248600">0</span></span></strong></div>
+      <div class="kpi"><small>Successful payments</small><strong><span class="sk-hide" data-count="3842">0</span></strong></div>
+      <div class="kpi"><small>Success rate</small><strong><span class="sk-hide"><span data-count="97.6" data-dec="1">0</span>%</span></strong></div>
+    </div>
+    <div class="tabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-p="a">7 days</button><button type="button" role="tab" aria-selected="false" data-p="b">30 days</button><span class="ind"></span></div>
+    <svg class="chart" id="chart" viewBox="0 0 400 120" role="img" aria-label="Payment volume trend, rising">
+      <path id="area" d="" fill="url(#chartFill)"/><defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2855C5" stop-opacity=".24"/><stop offset="1" stop-color="#2855C5" stop-opacity=".015"/></linearGradient></defs><path id="line-glow" d="" fill="none" stroke="#6C8EEA" stroke-width="8" stroke-linecap="round" pathLength="1"/><path id="line" d="" fill="none" stroke="#2855C5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/>
+      <circle class="chart-marker-halo" r="8"><animateMotion dur="4s" begin="1.8s" repeatCount="indefinite"><mpath href="#line"/></animateMotion></circle><circle class="chart-marker" r="3.5"><animateMotion dur="4s" begin="1.8s" repeatCount="indefinite"><mpath href="#line"/></animateMotion></circle>
+    </svg>
+    <div class="gauge"><svg viewBox="0 0 120 70" aria-hidden="true"><path class="gb" d="M10 62A50 50 0 0 1 110 62" pathLength="1"/><path class="gf" d="M10 62A50 50 0 0 1 110 62" pathLength="1"/></svg><div><strong>Risk score 18 / 100</strong><span>Low risk · 2 payments in manual review</span></div></div>
+    <ul class="rows" id="rows"></ul>
+    <div style="margin-top: 18px; text-align: center;">
+      <button class="btn btn-primary" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('overview');">Open Full Merchant App &amp; Live Feed →</button>
+    </div>
+  </div>
+</section>
+
+<!-- Payment Links Section -->
+<section class="sec" id="links"><h2 class="reveal">Collect money with a link or QR code</h2>
+<div class="calc reveal"><form id="lform" novalidate><label>Amount (₹)<input id="lamt" inputmode="decimal" value="1500"></label><label>What is it for?<input id="ldesc" value="Design workshop fee" maxlength="60"></label><div class="chk"><label class="row"><input type="checkbox" id="lpart"> Allow partial payments</label><label class="row"><input type="checkbox" id="lupi"> UPI only</label></div><label>Expires in<select id="lexp"><option>1 day</option><option selected>7 days</option><option>30 days</option></select></label><button class="btn btn-primary" type="submit">Create payment link</button></form><div class="status lres" id="lres" aria-live="polite"><p>Your link and QR code will appear here.</p></div></div>
+<div style="margin-top: 18px; text-align: center;">
+  <button class="btn btn-ghost" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('page-builder');">Launch Visual No-Code Page Builder →</button>
+</div>
+</section>
+
+<!-- Pricing & Fee Calculator + Plan Comparison -->
+<section class="sec" id="pricing">
+  <h2 class="reveal">Transparent pricing with no hidden charges</h2>
+  <div class="calc reveal">
+    <div>
+      <label for="amt">Payment amount: <b id="amtv">₹5,000</b></label>
+      <input id="amt" type="range" min="100" max="100000" step="100" value="5000">
+      <div class="seg" id="seg" role="radiogroup" aria-label="Payment method">
+        <button type="button" role="radio" aria-checked="true" data-r="0.4">UPI (0.4%)</button>
+        <button type="button" role="radio" aria-checked="false" data-r="1.9">Cards (1.9%)</button>
+        <button type="button" role="radio" aria-checked="false" data-r="1.6">Net Banking (1.6%)</button>
+      </div>
+      <small>Real-time calculation showing fee deduction and GST.</small>
+    </div>
+    <dl class="res" aria-live="polite">
+      <div><dt>Gateway Fee</dt><dd id="rf">₹0.00</dd></div>
+      <div><dt>GST on fee (18%)</dt><dd id="rg">₹0.00</dd></div>
+      <div class="net"><dt>You receive in bank</dt><dd id="rn">₹0.00</dd></div>
+    </dl>
+  </div>
+
+  <!-- Plan Comparison Grid (PDF Module 1) -->
+  <div class="plan-cards plan-deck-wrapper" id="planCardsDeck">
+    <!-- Plan 1: Starter -->
+    <div class="stat-card plan-card plan-card-1" data-rot="3" data-depth="9" role="article" aria-label="Starter Plan - Pay as you go">
+      <span class="badge">STARTER</span>
+      <h3>Pay as you go</h3>
+      <p>Standard 2% per transaction. Zero setup fee, zero annual maintenance.</p>
+      <ul style="font-size: 0.85rem; color: var(--text); padding-left: 18px; margin: 0 0 20px; line-height: 1.8;">
+        <li>Standard checkout &amp; UPI</li>
+        <li>T+2 settlements</li>
+        <li>Standard fraud rules</li>
+      </ul>
+      <button class="btn btn-ghost plan-button" data-auth="up">Get Started Free</button>
+    </div>
+
+    <!-- Plan 2: Growth Pro (Featured / Most Popular) -->
+    <div class="stat-card plan-card plan-card-2 plan-card-featured" data-rot="0" data-depth="5" role="article" aria-label="Growth Pro Plan - Most Popular">
+      <span class="badge ok">MOST POPULAR</span>
+      <h3>Growth Pro</h3>
+      <p>₹2,999 / mo + 1.6% transaction fee. Instant settlements &amp; subscription engine.</p>
+      <ul style="font-size: 0.85rem; color: var(--text); padding-left: 18px; margin: 0 0 20px; line-height: 1.8;">
+        <li>T+0 / Instant settlements</li>
+        <li>Automated recurring billing</li>
+        <li>Custom no-code payment pages</li>
+        <li>Priority 24/7 technical support</li>
+      </ul>
+      <button class="btn btn-primary plan-button" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('subscriptions');">Try Growth Plan</button>
+    </div>
+
+    <!-- Plan 3: Enterprise -->
+    <div class="stat-card plan-card plan-card-3" data-rot="-3" data-depth="9" role="article" aria-label="Enterprise Plan - Scale">
+      <span class="badge">SCALE</span>
+      <h3>Enterprise</h3>
+      <p>Custom volume discounts, dedicated account manager, and multi-gateway routing.</p>
+      <ul style="font-size: 0.85rem; color: var(--text); padding-left: 18px; margin: 0 0 20px; line-height: 1.8;">
+        <li>Interchange++ pricing</li>
+        <li>Multi-gateway smart fallback</li>
+        <li>Custom risk model tuning</li>
+        <li>Dedicated account manager &amp; SLA</li>
+      </ul>
+      <button class="btn btn-ghost plan-button" id="btn-contact-sales-plan">Contact Sales</button>
+    </div>
+  </div>
+</section>
+
+<!-- Developers Section -->
+<section class="sec" id="developers"><h2 class="reveal">Create a payment in one request</h2>
+<div class="code reveal"><div class="ch"><div class="tabs2" role="tablist"><button type="button" role="tab" aria-selected="true" data-l="curl">cURL</button><button type="button" role="tab" aria-selected="false" data-l="node">Node.js</button></div><button class="btn btn-ghost" id="copy" type="button">Copy</button></div><pre><code id="code" tabindex="0"></code></pre></div>
+<div style="margin-top: 18px; text-align: center;">
+  <button class="btn btn-primary" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('developers');">Open Full Developer Portal &amp; API Sandbox →</button>
+</div>
+</section>
+
+<!-- Checkout Section -->
+<section class="sec sec-checkout-wrap" id="checkout">
+  <div class="sec-security-header" style="text-align: center; margin: 0 auto 36px;">
+    <div class="sec-security-badge">
+      <span class="sec-security-badge-dot"></span>
+      <span>REAL-TIME CHECKOUT TERMINAL</span>
+    </div>
+    <h2 class="sec-security-title" style="margin: 0 auto 12px;">Checkout that stays calm when things go wrong</h2>
+    <p class="sec-security-subtitle" style="margin: 0 auto;">Simulate live authorizations, 3DS flows, instant retry fallbacks, and multi-mode collections.</p>
+  </div>
+
+  <div class="co" id="checkoutTerminal" data-rot="0" data-depth="8" role="region" aria-label="Interactive Checkout Simulator">
+    <div class="co-glare" aria-hidden="true"></div>
+    <form id="payform" novalidate>
+      <div class="seg" id="methods" role="radiogroup" aria-label="Payment method">
+        <button type="button" role="radio" aria-checked="true" data-m="card">Card</button>
+        <button type="button" role="radio" aria-checked="false" data-m="upi">UPI</button>
+        <button type="button" role="radio" aria-checked="false" data-m="nb">Net banking</button>
+        <button type="button" role="radio" aria-checked="false" data-m="wallet">Wallet</button>
+      </div>
+
+      <div class="mp" data-pane="card">
+        <label>Card number
+          <input id="cn" inputmode="numeric" autocomplete="off" value="4242 4242 4242 4242">
+        </label>
+        <div class="two">
+          <label>Expiry
+            <input value="12 / 29" autocomplete="off">
+          </label>
+          <label>CVV
+            <input type="password" placeholder="•••" autocomplete="off">
+          </label>
+        </div>
+      </div>
+
+      <div class="mp" data-pane="upi" hidden>
+        <label>UPI ID
+          <input id="upi" placeholder="name@bank" autocomplete="off">
+        </label>
+        <div class="qrbox">
+          <div class="qr-visual">
+            <canvas id="upiqr" width="150" height="150" role="img" aria-label="Sample QR code, not scannable"></canvas>
+            <span class="qr-scan" aria-hidden="true"></span>
+            <span class="qr-corners" aria-hidden="true"></span>
+            <span class="qr-tag" aria-hidden="true">DEMO</span>
+          </div>
+          <small>Sample QR only — not scannable</small>
+        </div>
+      </div>
+
+      <div class="mp" data-pane="nb" hidden>
+        <label>Choose your bank
+          <select id="bank">
+            <option value="">Select a bank</option>
+            <option>State Bank of India</option>
+            <option>HDFC Bank</option>
+            <option>ICICI Bank</option>
+            <option>Axis Bank</option>
+            <option>Kotak Mahindra Bank</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="mp" data-pane="wallet" hidden>
+        <div class="seg" id="wal" role="radiogroup" aria-label="Wallet">
+          <button type="button" role="radio" aria-checked="false">Sample Wallet A</button>
+          <button type="button" role="radio" aria-checked="false">Sample Wallet B</button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary ripple" id="pay" type="submit">Pay ₹2,499</button>
+      <button class="btn btn-ghost" id="fail" type="button">Simulate a failed payment</button>
+    </form>
+
+    <div class="status" id="status" role="status" aria-live="polite">
+      <p class="idle">Enter details and pay. No real card data is used.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px; text-align: center;">
+    <button class="checkout-simulator-pill" onclick="window.toucanApp.setView('platform'); window.toucanApp.setTab('checkout');">
+      <span>Open Advanced Checkout Simulator (with 3DS &amp; Receipts)</span>
+      <span aria-hidden="true">→</span>
+    </button>
+  </div>
+</section>
+
+<!-- Security & Compliance Section (PDF Module 1) -->
+<section class="sec" id="security">
+  <div class="sec-security-header">
+    <div class="sec-security-badge">
+      <span class="sec-security-badge-dot"></span>
+      <span>ENTERPRISE COMPLIANCE &amp; ARCHITECTURE</span>
+    </div>
+    <h2 class="sec-security-title">Bank-grade security &amp; compliance by design</h2>
+    <p class="sec-security-subtitle">Highest standard of payment security and regulatory infrastructure protecting every transaction.</p>
+  </div>
+
+  <div class="security-cards-grid" id="securityCardsGrid">
+    <!-- Card 1: PCI-DSS Level 1 -->
+    <div class="sec-card sec-card-1" data-rot="-2" data-depth="12" role="article" aria-label="PCI-DSS Level 1 Security">
+      <div class="sec-card-header">
+        <h3 class="sec-card-title">PCI-DSS Level 1</h3>
+        <span class="sec-card-icon sec-icon-shield" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M12 2L4 5.5v6.5c0 5.25 3.4 10.15 8 11.5 4.6-1.35 8-6.25 8-11.5V5.5L12 2z" fill="#2563eb" fill-opacity="0.16" stroke="#2563eb" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M9 12l2 2 4-4" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </div>
+      <p class="sec-card-desc">Highest standard of payment security. Raw card details never touch your application servers.</p>
+      <span class="sec-card-dot" aria-hidden="true"></span>
+    </div>
+
+    <!-- Card 2: RBI PA-PG Directives -->
+    <div class="sec-card sec-card-2" data-rot="1.5" data-depth="7" role="article" aria-label="RBI PA-PG Directives">
+      <div class="sec-card-header">
+        <h3 class="sec-card-title">RBI PA-PG Directives</h3>
+        <span class="sec-card-icon sec-icon-bank" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M3 9.5L12 3l9 6.5" stroke="#475569" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M5 10v7M9 10v7M15 10v7M19 10v7" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
+            <path d="M2 20h20" stroke="#475569" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </div>
+      <p class="sec-card-desc">Full compliance with Reserve Bank of India tokenisation, settlement, and nodal account guidelines.</p>
+      <span class="sec-card-dot" aria-hidden="true"></span>
+    </div>
+
+    <!-- Card 3: 256-Bit TLS & HSM -->
+    <div class="sec-card sec-card-3" data-rot="-1.5" data-depth="9" role="article" aria-label="256-Bit TLS and HSM Security">
+      <div class="sec-card-header">
+        <h3 class="sec-card-title">256-Bit TLS &amp; HSM</h3>
+        <span class="sec-card-icon sec-icon-lock" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <rect x="5" y="11" width="14" height="10" rx="2.5" fill="#F59E0B" fill-opacity="0.18" stroke="#D97706" stroke-width="2"/>
+            <path d="M8 11V7a4 4 0 0 1 8 0v4" stroke="#D97706" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="12" cy="16" r="1.5" fill="#B45309"/>
+          </svg>
+        </span>
+      </div>
+      <p class="sec-card-desc">Hardware security modules with end-to-end encryption for API keys and webhook signing.</p>
+      <span class="sec-card-dot" aria-hidden="true"></span>
+    </div>
+
+    <!-- Card 4: 99.99% Core Uptime -->
+    <div class="sec-card sec-card-4" data-rot="2" data-depth="13" role="article" aria-label="99.99% Core Uptime">
+      <div class="sec-card-header">
+        <h3 class="sec-card-title">99.99% Core Uptime</h3>
+        <span class="sec-card-icon sec-icon-bolt" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+            <path d="M13 2L4.5 13.5H12L11 22L19.5 10.5H12L13 2Z" fill="#F97316" fill-opacity="0.22" stroke="#EA580C" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </span>
+      </div>
+      <p class="sec-card-desc">Multi-region active-active cloud architecture with automated zero-downtime failover.</p>
+      <span class="sec-card-dot" aria-hidden="true"></span>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ Accordion (PDF Module 1) -->
+<section class="sec sec-faq-wrap" id="faq">
+  <div class="sec-faq-header">
+    <div class="sec-security-badge">
+      <span class="sec-security-badge-dot"></span>
+      <span>KNOWLEDGE BASE &amp; FAQ</span>
+    </div>
+    <h2 class="sec-faq-title">Frequently Asked Questions</h2>
+    <p class="sec-faq-subtitle">Everything you need to know about settlements, activation, sandbox testing, and global compliance.</p>
+  </div>
+
+  <div class="faq-container" id="faqContainer">
+    <!-- FAQ Item 1 -->
+    <article class="faq-card faq-card-open" data-rot="-0.8" data-depth="8" role="region" aria-label="Settlement Schedule FAQ">
+      <div class="faq-card-header" role="button" tabindex="0" aria-expanded="true">
+        <div class="faq-card-title-group">
+          <span class="faq-card-num" aria-hidden="true">01</span>
+          <h3 class="faq-card-title">How fast are funds deposited into my bank account?</h3>
+        </div>
+        <span class="faq-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="faq-card-body">
+        <div class="faq-card-content">
+          <p>Standard settlements occur on a <strong>T+1 or T+2</strong> business day schedule. Growth and Enterprise merchants can enable <strong>Instant Settlements (T+0)</strong> to receive payouts in as little as 15 minutes, 24/7/365 including bank holidays.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- FAQ Item 2 -->
+    <article class="faq-card" data-rot="0.8" data-depth="6" role="region" aria-label="Business Activation FAQ">
+      <div class="faq-card-header" role="button" tabindex="0" aria-expanded="false">
+        <div class="faq-card-title-group">
+          <span class="faq-card-num" aria-hidden="true">02</span>
+          <h3 class="faq-card-title">What documents are required for business activation?</h3>
+        </div>
+        <span class="faq-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="faq-card-body">
+        <div class="faq-card-content">
+          <p>Company PAN, Certificate of Incorporation / GST Registration, Authorized Signatory ID (PAN or Aadhaar), and a cancelled cheque or bank statement for automated penny-drop verification. Digital onboarding takes less than 10 minutes.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- FAQ Item 3 -->
+    <article class="faq-card" data-rot="-0.6" data-depth="10" role="region" aria-label="KYC Testing FAQ">
+      <div class="faq-card-header" role="button" tabindex="0" aria-expanded="false">
+        <div class="faq-card-title-group">
+          <span class="faq-card-num" aria-hidden="true">03</span>
+          <h3 class="faq-card-title">Can I test everything before submitting KYC?</h3>
+        </div>
+        <span class="faq-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="faq-card-body">
+        <div class="faq-card-content">
+          <p>Yes! Test mode is completely unrestricted. You can simulate UPI payments, test 3DS card outcomes, and verify webhook signatures against our mock banking sandbox without submitting any documentation.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- FAQ Item 4 -->
+    <article class="faq-card" data-rot="0.7" data-depth="7" role="region" aria-label="International Payments FAQ">
+      <div class="faq-card-header" role="button" tabindex="0" aria-expanded="false">
+        <div class="faq-card-title-group">
+          <span class="faq-card-num" aria-hidden="true">04</span>
+          <h3 class="faq-card-title">How does Toucan handle international payments &amp; 130+ currencies?</h3>
+        </div>
+        <span class="faq-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="faq-card-body">
+        <div class="faq-card-content">
+          <p>Toucan provides native multi-currency pricing (MCP) and localized checkout in 130+ fiat currencies with real-time conversion rates. Settlements are automatically converted and disbursed into your domestic INR nodal bank account with automated FIRC certificates.</p>
+        </div>
+      </div>
+    </article>
+
+    <!-- FAQ Item 5 -->
+    <article class="faq-card" data-rot="-0.5" data-depth="9" role="region" aria-label="Fraud Prevention FAQ">
+      <div class="faq-card-header" role="button" tabindex="0" aria-expanded="false">
+        <div class="faq-card-title-group">
+          <span class="faq-card-num" aria-hidden="true">05</span>
+          <h3 class="faq-card-title">What fraud prevention and 3DS 2.0 protocols are included?</h3>
+        </div>
+        <span class="faq-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="6 9 12 15 18 9"></polyline>
+          </svg>
+        </span>
+      </div>
+      <div class="faq-card-body">
+        <div class="faq-card-content">
+          <p>Every transaction is screened by our real-time ML risk engine analyzing 120+ behavioral parameters, device fingerprints, and velocity patterns. EMV 3DS 2.0 provides frictionless zero-step authentication on low-risk payments while maintaining bank-grade PCI-DSS Level 1 protection.</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     Toucan Mega About & Directory Section
+     ========================================================================== -->
+<section class="rzp-about-section" id="about" aria-label="About and Directory">
+  <div class="rzp-container">
+    <!-- About Header & Highlights -->
+    <div class="rzp-about-header">
+      <div class="rzp-about-badge">
+        <span class="rzp-about-badge-dot"></span>
+        ABOUT TOUCAN • PLATFORM ARCHITECTURE
+      </div>
+      <h2 class="rzp-about-title">The financial operating system built for scale.</h2>
+      <p class="rzp-about-subtitle">Powering frictionless payment infrastructure, automated payouts, and real-time business banking for ambitious companies across India and beyond.</p>
+      
+      <!-- Key Platform Metrics Strip -->
+      <div class="rzp-about-metrics">
+        <div class="rzp-metric-item">
+          <span class="rzp-metric-val">58+</span>
+          <span class="rzp-metric-lbl">Connected Banks &amp; UPI Rails</span>
+        </div>
+        <div class="rzp-metric-item">
+          <span class="rzp-metric-val">&lt; 180ms</span>
+          <span class="rzp-metric-lbl">Median Processing Latency</span>
+        </div>
+        <div class="rzp-metric-item">
+          <span class="rzp-metric-val">₹4,800Cr+</span>
+          <span class="rzp-metric-lbl">Monthly Volume Capacity</span>
+        </div>
+        <div class="rzp-metric-item">
+          <span class="rzp-metric-val">99.99%</span>
+          <span class="rzp-metric-lbl">Core Infrastructure Uptime</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rzp-layout">
+      <!-- Left Column: About & Company Mission -->
+      <div class="rzp-about-col">
+        <div class="rzp-about-story-card">
+          <div class="rzp-brand-header">
+            <a href="#top" class="rzp-logo-link" aria-label="Toucan Home">
+              <svg class="rzp-logo-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+                <path d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z"/>
+              </svg>
+              <span class="rzp-brand-name">Toucan</span>
+            </a>
+          </div>
+
+          <div class="rzp-about-text">
+            <p>
+              A comprehensive payments suite in India designed to help modern businesses seamlessly accept, process, and disburse payments. Toucan gives you unified access to all payment modes including credit cards, debit cards, netbanking across 58+ banks, UPI (Google Pay, PhonePe, Paytm, CRED), and popular digital wallets including JioMoney, Mobikwik, Airtel Money, FreeCharge, and Ola Money.
+            </p>
+            <p>
+              ToucanX supercharges your business banking experience, bringing effectiveness, efficiency, and real-time visibility to all financial processes. With ToucanX, businesses get access to fully-functional current accounts, supercharged instant payouts, automated reconciliation, and hands-free payroll compliance.
+            </p>
+            <p>
+              Manage your marketplace splits, automate vendor bank transfers, collect recurring subscriptions, share branded invoices with customers, and avail working capital facilities — all from a single platform. Fast forward your business with Toucan.
+            </p>
+          </div>
+        </div>
+
+        <div class="rzp-disclaimer">
+          <div class="rzp-disclaimer-head">
+            <span class="rzp-disclaimer-shield" aria-hidden="true">🛡️</span>
+            <div>
+              <p>Disclaimer: The ToucanX powered financial products are provided in direct partnership with RBI-licensed partner banks, in accordance with RBI regulations.</p>
+              <ul>
+                <li>Corporate Credit Card: Issued by YES Bank Ltd. and RBL Bank Ltd. on the Mastercard network.</li>
+                <li>Current Accounts &amp; Escrow: Provided by Axis Bank, IDFC FIRST Bank, and RBL Bank Ltd.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="rzp-partner-chips">
+            <span class="rzp-chip">Axis Bank</span>
+            <span class="rzp-chip">YES Bank</span>
+            <span class="rzp-chip">IDFC FIRST Bank</span>
+            <span class="rzp-chip">RBL Bank</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Navigation Links Subgrid -->
+      <div class="rzp-links-cols">
+        <!-- Subcolumn 1 -->
+        <div class="rzp-col">
+          <div class="rzp-group">
+            <h4 class="rzp-heading">ACCEPT PAYMENTS</h4>
+            <ul class="rzp-list">
+              <li><a href="#products">Payment Aggregator</a></li>
+              <li><a href="#checkout">Payment Gateway</a></li>
+              <li><a href="#links">Payment Pages</a></li>
+              <li><a href="#links">Payment Links</a></li>
+              <li><a href="#products">Toucan POS <span class="rzp-badge-new">NEW</span></a></li>
+              <li><a href="#links">QR Codes</a></li>
+              <li><a href="#products">Subscriptions</a></li>
+              <li><a href="#products">Smart Collect</a></li>
+              <li><a href="#products">Optimizer</a></li>
+              <li><a href="#products">Instant Settlements</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">PAYROLL</h4>
+            <ul class="rzp-list">
+              <li><a href="#products">ToucanX Payroll</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">BECOME A PARTNER</h4>
+            <ul class="rzp-list">
+              <li><a href="#pricing">Refer and Earn</a></li>
+              <li><a href="#developers">Onboarding APIs</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">MORE</h4>
+            <ul class="rzp-list">
+              <li><a href="#products">Route</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Subcolumn 2 -->
+        <div class="rzp-col">
+          <div class="rzp-group">
+            <h4 class="rzp-heading">BANKING PLUS</h4>
+            <ul class="rzp-list">
+              <li><a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('overview'));">ToucanX</a></li>
+              <li><a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('payouts'));">Source to pay</a></li>
+              <li><a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('settlements'));">Current Accounts</a></li>
+              <li><a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('payouts'));">Payouts</a></li>
+              <li><a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('links'));">Payout Links</a></li>
+              <li><a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('overview'));">Corporate Credit Card</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">DEVELOPERS</h4>
+            <ul class="rzp-list">
+              <li><a href="#developers">Docs</a></li>
+              <li><a href="#developers">API Reference</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">RESOURCES</h4>
+            <ul class="rzp-list">
+              <li><a href="#story">Blog</a></li>
+              <li><a href="about.html">Learn</a></li>
+              <li><a href="#solutions">Customer Stories</a></li>
+              <li><a href="#solutions">Events</a></li>
+              <li><a href="#security">Chargeback Guide</a></li>
+              <li><a href="#platform">Settlement Guide</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Subcolumn 3 -->
+        <div class="rzp-col">
+          <div class="rzp-group">
+            <h4 class="rzp-heading">COMPANY</h4>
+            <ul class="rzp-list">
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="about.html">Careers</a></li>
+              <li><a href="#" class="open-terms-modal">Website Terms</a></li>
+              <li><a href="#" class="open-terms-modal">Terms of Use</a></li>
+              <li><a href="#" class="open-privacy-modal">Privacy Policy</a></li>
+              <li><a href="#" class="open-support-modal">Grievance Redressal</a></li>
+              <li><a href="#" class="open-security-modal">Responsible Disclosure</a></li>
+              <li><a href="#solutions">Partners</a></li>
+              <li><a href="#developers">White papers</a></li>
+              <li><a href="about.html">Corporate Information</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">HELP &amp; SUPPORT</h4>
+            <ul class="rzp-list">
+              <li><a href="#" class="open-support-modal">Support</a></li>
+              <li><a href="#faq">Knowledge base</a></li>
+            </ul>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">FIND US ONLINE</h4>
+            <div class="rzp-socials">
+              <!-- Facebook -->
+              <a href="https://facebook.com" class="rzp-social-btn fb" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              </a>
+              <!-- X (Twitter) -->
+              <a href="https://x.com" class="rzp-social-btn x" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)">
+                <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              </a>
+              <!-- Instagram -->
+              <a href="https://instagram.com" class="rzp-social-btn ig" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              </a>
+              <!-- GitHub -->
+              <a href="https://github.com" class="rzp-social-btn gh" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                <svg viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              </a>
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com" class="rzp-social-btn li" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                <svg viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <div class="rzp-group">
+            <h4 class="rzp-heading">REGD. OFFICE ADDRESS</h4>
+            <div class="rzp-address-card">
+              <div class="rzp-hq-status">
+                <span class="rzp-hq-dot"></span>
+                <span>Bengaluru Global HQ</span>
+              </div>
+              <p class="rzp-address">
+                Toucan Technologies India Private Limited,<br>
+                1st Floor, SJR Cyber, 22 Laskar Hosur Road,<br>
+                Adugodi, Bengaluru - 560030,<br>
+                Karnataka, India<br>
+                <small class="rzp-cin-badge">CIN: U72200KA2024PTC168392</small>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sub-Footer Bottom Bar -->
+    <div class="rzp-bottom-bar">
+      <div class="rzp-bottom-copy">
+        <span>&copy; 2026 Toucan Platform. All rights reserved.</span>
+      </div>
+      <div class="rzp-bottom-links">
+        <a href="landing.html">Marketing Home</a>
+        <a href="about.html">About Page</a>
+        <a href="#platform" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('overview'));">Merchant Console</a>
+        <a href="#platform-estimator" onclick="window.toucanApp && (window.toucanApp.setView('platform'), window.toucanApp.setTab('estimator'));">Scope Estimator</a>
+        <a href="#" class="open-terms-modal">Privacy &amp; Terms</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ==========================================
+     2. MERCHANT CONSOLE & OPERATIONS WORKSPACE
+     (PDF Modules 2–15: Role-aware App Shell)
+     ========================================== -->
+<div id="merchant-platform-container" hidden>
+  <div class="app-shell">
+    <!-- Sidebar Navigation -->
+    <aside class="app-sidebar">
+      <div>
+        <div style="display: flex; align-items: center; gap: 8px; font-weight: 800; color: var(--accent); margin-bottom: 8px;">
+          <svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+          <span>Merchant Console</span>
+        </div>
+        <div style="font-size: 0.78rem; color: var(--muted);">Apex Cloud Solutions Pvt Ltd</div>
+      </div>
+
+      <div>
+        <div class="sidebar-section-title">Core Workspace</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item active" data-tab="overview">
+            <button type="button"><span class="nav-icon">📊</span> Overview</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="transactions">
+            <button type="button"><span class="nav-icon">💳</span> Transactions <span class="nav-badge">7</span></button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="customers">
+            <button type="button"><span class="nav-icon">👥</span> Customers</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="checkout">
+            <button type="button"><span class="nav-icon">🛒</span> Checkout Simulator</button>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-title">Accept &amp; Collect</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item" data-tab="links">
+            <button type="button"><span class="nav-icon">🔗</span> Payment Links</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="page-builder">
+            <button type="button"><span class="nav-icon">🎨</span> No-Code Pages</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="subscriptions">
+            <button type="button"><span class="nav-icon">🔄</span> Subscriptions</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="invoices">
+            <button type="button"><span class="nav-icon">📄</span> GST Invoices</button>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-title">Finance &amp; Transfers</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item" data-tab="settlements">
+            <button type="button"><span class="nav-icon">💰</span> Settlements &amp; Balances</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="payouts">
+            <button type="button"><span class="nav-icon">💸</span> Direct Payouts</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="marketplace">
+            <button type="button"><span class="nav-icon">🏪</span> Marketplace Splits</button>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-title">Developers &amp; Tools</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item" data-tab="developers">
+            <button type="button"><span class="nav-icon">💻</span> API Reference &amp; Keys</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="webhooks">
+            <button type="button"><span class="nav-icon">🪝</span> Webhooks &amp; Logs</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="sandbox">
+            <button type="button"><span class="nav-icon">🧪</span> Sandbox Simulator</button>
+          </li>
+        </ul>
+
+        <div class="sidebar-section-title">Risk, Operations &amp; Specs</div>
+        <ul class="sidebar-nav">
+          <li class="sidebar-nav-item" data-tab="risk">
+            <button type="button"><span class="nav-icon">🛡️</span> Risk &amp; Fraud Desk</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="settings">
+            <button type="button"><span class="nav-icon">⚙️</span> Settings &amp; RBAC</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="super-admin">
+            <button type="button"><span class="nav-icon">🏢</span> Super-Admin Console</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="onboarding">
+            <button type="button"><span class="nav-icon">📋</span> Onboarding &amp; KYC</button>
+          </li>
+          <li class="sidebar-nav-item" data-tab="estimator">
+            <button type="button"><span class="nav-icon">📐</span> Scope Estimator</button>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content Outlet -->
+    <main class="app-content" id="platform-content-outlet">
+      <!-- Dynamically filled by platform.js -->
+    </main>
+  </div>
+</div>
+
+<!-- Interactive Global Modal Container -->
+<div class="app-modal-overlay" id="app-modal-overlay" hidden>
+  <div class="app-modal-box" id="app-modal-box" role="dialog" aria-modal="true">
+    <!-- Rendered dynamically -->
+  </div>
+</div>
+
+<!-- Auth Modal (Sign In / Sign Up) -->
+<div class="pal auth" id="auth" hidden><div class="box" role="dialog" aria-modal="true" aria-labelledby="atitle"><button class="x" id="aclose" type="button" aria-label="Close">×</button><div class="auth-brand"><span class="auth-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 12c4-8 12-8 16 0-4 8-12 8-16 0z"/></svg></span><span>TOUCAN ACCOUNT</span></div><h3 id="atitle">Welcome back</h3><p class="auth-intro" id="authintro">Sign in to continue to your account.</p><div class="seg" id="atabs" role="tablist"><button type="button" role="tab" aria-selected="true" data-a="in">Sign in</button><button type="button" role="tab" aria-selected="false" data-a="up">Create account</button></div>
+<form id="aform" novalidate><label data-up hidden>Business name<input id="abiz" autocomplete="organization" maxlength="100"></label><label>Email<input id="aem" type="email" autocomplete="email"></label><label id="apwl">Password<span class="pw"><input id="apw" type="password" autocomplete="current-password"><button type="button" id="apeek" aria-label="Show password">Show</button></span></label><label data-up hidden>Confirm password<input id="acpw" type="password" autocomplete="new-password"></label><p class="hint" id="ameter" data-up hidden>Use at least 8 characters and include a number.</p><p class="err" id="aerr" role="alert"></p><button class="btn btn-primary" type="submit" id="asub">Sign in</button><button class="link" type="button" id="aforgot">Forgot password?</button></form>
+<p class="small">Demo only: no account is created and nothing is stored or sent.</p></div></div>
+
+<!-- Command Palette -->
+<div class="pal" id="pal" hidden><div class="box" role="dialog" aria-modal="true" aria-label="Command palette"><input id="pq" placeholder="Jump to a section…" aria-label="Search sections" autocomplete="off"><ul id="pl"></ul></div></div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<!-- Floating "Ask Flow" button at bottom right (Toucan AI Assistant) -->
+<button class="rzp-ask-ray-btn" id="ask-ray-btn" type="button" aria-label="Ask Flow Conversational Assistant">
+  <span class="rzp-ray-sparkle" aria-hidden="true">
+    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/>
+    </svg>
+  </span>
+  <span>Ask Flow</span>
+</button>
+
+<!-- Interactive Ask Flow Assistant Drawer / Modal -->
+<div class="rzp-ray-modal-overlay" id="rzp-ray-modal-overlay" aria-hidden="true" role="dialog" aria-label="Ask Flow Assistant">
+  <div class="rzp-ray-window">
+    <div class="rzp-ray-header">
+      <div class="rzp-ray-title-wrap">
+        <div class="rzp-ray-avatar" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3z"/>
+          </svg>
+        </div>
+        <div>
+          <h3 class="rzp-ray-name" style="margin:0;">Flow Copilot <span class="rzp-ray-badge">AI Assistant</span></h3>
+          <p class="rzp-ray-sub" style="margin:0;">Ask questions about Toucan payments, banking &amp; APIs</p>
+        </div>
+      </div>
+      <button class="rzp-ray-close" id="rzp-ray-close" type="button" aria-label="Close Assistant">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+
+    <div class="rzp-ray-body" id="rzp-ray-chat-body">
+      <div class="rzp-chat-bubble assistant">
+        👋 Hi! I'm <strong>Flow</strong>, your Toucan payments assistant. How can I assist your business today?
+      </div>
+      <div class="rzp-quick-prompts">
+        <button class="rzp-quick-chip" type="button" data-prompt="What payment modes are supported?">💳 What payment modes are supported?</button>
+        <button class="rzp-quick-chip" type="button" data-prompt="How do instant settlements work?">⚡ How do instant settlements work?</button>
+        <button class="rzp-quick-chip" type="button" data-prompt="What is ToucanX current account?">🏦 What is ToucanX smart banking?</button>
+        <button class="rzp-quick-chip" type="button" data-prompt="How do I integrate the API keys?">🛠️ How do I integrate Toucan API keys?</button>
+      </div>
+    </div>
+
+    <div class="rzp-ray-footer">
+      <input type="text" class="rzp-ray-input" id="rzp-ray-chat-input" placeholder="Ask Flow a question..." aria-label="Ask Flow a question">
+      <button type="button" class="rzp-ray-send" id="rzp-ray-send-btn">Send</button>
+    </div>
+  </div>
+</div>
+
+<!-- Animation Libraries: GSAP & ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Scripts -->
+<script src="assets/dui-intro.js"></script>
+<script src="assets/app.js"></script>
+<script src="assets/platform.js"></script>
+<script src="assets/rzp-about.js"></script>
+<script src="assets/security-cards.js"></script>
+</body>
+</html>

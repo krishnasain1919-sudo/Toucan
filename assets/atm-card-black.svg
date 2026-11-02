@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 325 160" width="325" height="160">
+  <defs>
+    <linearGradient id="bg-black" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0d14"/>
+      <stop offset="45%" stop-color="#151d2c"/>
+      <stop offset="85%" stop-color="#223049"/>
+      <stop offset="100%" stop-color="#2d3d5a"/>
+    </linearGradient>
+    <linearGradient id="gold-text" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff5cc"/>
+      <stop offset="40%" stop-color="#eab308"/>
+      <stop offset="70%" stop-color="#ca8a04"/>
+      <stop offset="100%" stop-color="#fef08a"/>
+    </linearGradient>
+    <linearGradient id="chip-gold-2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fef08a"/>
+      <stop offset="50%" stop-color="#ca8a04"/>
+      <stop offset="100%" stop-color="#fef9c3"/>
+    </linearGradient>
+    <linearGradient id="sheen-black" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25"/>
+      <stop offset="35%" stop-color="#ffffff" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow-gold" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1" flood-color="#000" flood-opacity="0.75"/>
+    </filter>
+  </defs>
+
+  <!-- Card Body -->
+  <rect width="325" height="160" fill="url(#bg-black)"/>
+  <rect width="323" height="158" x="1" y="1" fill="none" stroke="url(#gold-text)" stroke-width="0.8" opacity="0.35"/>
+
+  <!-- High-Tech Geometric Grid Lines -->
+  <g opacity="0.16" stroke="url(#gold-text)" fill="none" stroke-width="0.8">
+    <path d="M0,25 L325,145 M0,55 L325,175 M0,85 L280,195" />
+    <path d="M325,25 L0,145 M325,55 L0,175 M325,85 L45,195" />
+    <circle cx="160" cy="80" r="55" stroke-dasharray="3 4"/>
+  </g>
+
+  <!-- Sheen Sweep -->
+  <path d="M0 0 L160 0 L60 160 L0 160 Z" fill="url(#sheen-black)"/>
+
+  <!-- Toucan Logo -->
+  <g transform="translate(20, 16)">
+    <path d="M3 9c3-6 9-6 12 0-3 6-9 6-12 0z" fill="none" stroke="url(#gold-text)" stroke-width="2"/>
+    <text x="20" y="12" fill="url(#gold-text)" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="800" letter-spacing="0.5">Toucan</text>
+    <text x="82" y="12" fill="#fef08a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="8" font-weight="700" letter-spacing="1.5">WORLD ELITE</text>
+  </g>
+
+  <!-- Contactless Payment Waves in Gold -->
+  <g transform="translate(285, 16)" stroke="url(#gold-text)" stroke-width="1.8" fill="none" opacity="0.95">
+    <path d="M0 3 A 8 8 0 0 1 0 15" stroke-linecap="round"/>
+    <path d="M4 1 A 12 12 0 0 1 4 17" stroke-linecap="round"/>
+    <path d="M8 -1 A 16 16 0 0 1 8 19" stroke-linecap="round"/>
+  </g>
+
+  <!-- Gold EMV Chip -->
+  <g transform="translate(22, 46)">
+    <rect width="36" height="26" rx="4" fill="url(#chip-gold-2)" stroke="#854d0e" stroke-width="0.7"/>
+    <path d="M0 9 H13 M23 9 H36 M0 17 H13 M23 17 H36" stroke="#58310c" stroke-width="0.7" opacity="0.85"/>
+    <rect x="13" y="6" width="10" height="14" rx="2" fill="none" stroke="#58310c" stroke-width="0.7" opacity="0.85"/>
+    <line x1="18" y1="0" x2="18" y2="6" stroke="#58310c" stroke-width="0.7" opacity="0.85"/>
+    <line x1="18" y1="20" x2="18" y2="26" stroke="#58310c" stroke-width="0.7" opacity="0.85"/>
+  </g>
+
+  <!-- Embossed Card Number in Warm Gold -->
+  <text x="22" y="108" fill="#fef08a" font-family="'Courier New', Courier, monospace" font-size="16" font-weight="bold" letter-spacing="2.6" filter="url(#shadow-gold)">
+    5512 &nbsp;7304 &nbsp;8820 &nbsp;9182
+  </text>
+
+  <!-- Cardholder Details -->
+  <g transform="translate(22, 126)">
+    <text x="0" y="8" fill="#ca8a04" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="6.5" font-weight="700" letter-spacing="1">CARDHOLDER</text>
+    <text x="0" y="21" fill="#fef08a" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="10.5" font-weight="700" letter-spacing="0.5">PRIYA SHARMA</text>
+  </g>
+
+  <!-- Expiry -->
+  <g transform="translate(155, 126)">
+    <text x="0" y="8" fill="#ca8a04" font-family="-apple-system, BlinkMacSystemFont, sans-serif" font-size="6.5" font-weight="700" letter-spacing="1">EXPIRES</text>
+    <text x="0" y="21" fill="#fef08a" font-family="'Courier New', Courier, monospace" font-size="11" font-weight="bold">11/28</text>
+  </g>
+
+  <!-- Mastercard Interlocking Circles Badge -->
+  <g transform="translate(255, 126)">
+    <circle cx="12" cy="11" r="11" fill="#eb001b" opacity="0.95"/>
+    <circle cx="25" cy="11" r="11" fill="#f59e0b" opacity="0.95"/>
+  </g>
+</svg>
